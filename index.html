@@ -1,0 +1,846 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Azadi Portal | پورتال آزادی</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #65f7c1;
+      --blue: #00c8ff;
+      --bg: #080d12;
+      --panel: rgba(255,255,255,.045);
+      --text: #f3f7fa;
+      --muted: #9aaab5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Vazirmatn", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      min-height: 100vh;
+      cursor: none;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      filter: blur(130px);
+      opacity: .14;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    body::before {
+      background: var(--green);
+      top: -180px;
+      right: -140px;
+    }
+
+    body::after {
+      background: var(--blue);
+      bottom: -180px;
+      left: -140px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    /* نوار بالا */
+
+    header {
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8,13,18,.78);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: -.5px;
+    }
+
+    .logo span {
+      color: var(--green);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--muted);
+      transition: .25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--green);
+    }
+
+    .nav-button {
+      padding: 10px 19px;
+      border-radius: 12px;
+      background: linear-gradient(120deg, var(--green), var(--blue));
+      color: #061117;
+      font-size: 13px;
+      font-weight: 800;
+      transition: .25s;
+    }
+
+    .nav-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px #00c8ff35;
+    }
+
+    /* بخش اصلی */
+
+    .hero {
+      max-width: 1200px;
+      min-height: 570px;
+      margin: auto;
+      padding: 80px 25px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 35px;
+    }
+
+    .hero-content {
+      animation: appear .8s ease both;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 15px;
+      border: 1px solid #65f7c133;
+      border-radius: 30px;
+      color: var(--green);
+      font-size: 12px;
+      background: #65f7c10b;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 57px);
+      line-height: 1.5;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      color: var(--green);
+    }
+
+    .hero p {
+      color: var(--muted);
+      line-height: 2.2;
+      max-width: 510px;
+      font-size: 15px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 30px;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      padding: 13px 23px;
+      border-radius: 13px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: .25s;
+    }
+
+    .primary-btn {
+      background: linear-gradient(120deg, var(--green), var(--blue));
+      color: #061117;
+    }
+
+    .secondary-btn {
+      border: 1px solid #ffffff20;
+      color: white;
+      background: #ffffff08;
+    }
+
+    .primary-btn:hover,
+    .secondary-btn:hover {
+      transform: translateY(-4px);
+    }
+
+    .hero-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: appear .9s ease .15s both;
+    }
+
+    .hero-image img {
+      display: block;
+      width: 100%;
+      max-width: 540px;
+      height: auto;
+      object-fit: contain;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    /* بخش‌های عمومی */
+
+    .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 75px 25px;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .section-heading span {
+      color: var(--green);
+      font-size: 13px;
+    }
+
+    .section-heading h2 {
+      font-size: 30px;
+      margin: 10px 0;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* درباره ما */
+
+    .about-box {
+      padding: 35px;
+      border: 1px solid #ffffff10;
+      border-radius: 22px;
+      background: var(--panel);
+      line-height: 2.2;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* امکانات */
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card {
+      padding: 28px;
+      border-radius: 20px;
+      border: 1px solid #ffffff10;
+      background: var(--panel);
+      transition: .3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      border-color: #65f7c155;
+      background: #65f7c108;
+    }
+
+    .feature-icon {
+      font-size: 28px;
+      margin-bottom: 17px;
+    }
+
+    .feature-card h3 {
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    /* بسته‌ها */
+
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .package-card {
+      position: relative;
+      overflow: hidden;
+      padding: 30px 25px;
+      border-radius: 22px;
+      border: 1px solid #ffffff12;
+      background: var(--panel);
+      transition: .3s;
+    }
+
+    .package-card:hover {
+      transform: translateY(-7px);
+      border-color: #65f7c166;
+    }
+
+    .package-card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .package-card .description {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 2;
+      min-height: 55px;
+    }
+
+    .price {
+      margin: 25px 0;
+      font-size: 25px;
+      font-weight: 800;
+      color: var(--green);
+    }
+
+    .price small {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .package-card a {
+      display: block;
+      text-align: center;
+      padding: 12px;
+      border-radius: 12px;
+      background: #65f7c112;
+      color: var(--green);
+      border: 1px solid #65f7c133;
+      font-size: 13px;
+      transition: .25s;
+    }
+
+    .package-card a:hover {
+      background: var(--green);
+      color: #061117;
+    }
+
+    /* فوتر */
+
+    footer {
+      margin-top: 60px;
+      padding: 35px 20px;
+      border-top: 1px solid #ffffff10;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 2.2;
+    }
+
+    footer strong {
+      color: var(--green);
+    }
+
+    /* نشانگر اختصاصی موس */
+
+    .cursor-dot,
+    .cursor-outline {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 99999;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .cursor-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      box-shadow: 0 0 12px var(--green);
+    }
+
+    .cursor-outline {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--green);
+      box-shadow: 0 0 14px #00c8ff55;
+      transition:
+        width .2s ease,
+        height .2s ease,
+        background .2s ease,
+        border-color .2s ease;
+    }
+
+    .cursor-outline.hover {
+      width: 52px;
+      height: 52px;
+      background: #65f7c122;
+      border-color: var(--blue);
+    }
+
+    .cursor-outline.click {
+      width: 22px;
+      height: 22px;
+    }
+
+    /* موج زیر موس */
+
+    .ripple {
+      position: fixed;
+      width: 25px;
+      height: 25px;
+      border: 1px solid #65f7c177;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99990;
+      transform: translate(-50%, -50%) scale(.3);
+      animation: rippleEffect .8s ease-out forwards;
+    }
+
+    @keyframes rippleEffect {
+      0% {
+        opacity: .8;
+        transform: translate(-50%, -50%) scale(.3);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(3.5);
+      }
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* موبایل و تبلت */
+
+    @media (max-width: 800px) {
+      body {
+        cursor: auto;
+      }
+
+      .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 17px;
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 55px;
+      }
+
+      .hero p {
+        margin: auto;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .hero-image img {
+        max-width: 430px;
+      }
+
+      .features,
+      .packages {
+        grid-template-columns: 1fr;
+      }
+
+      .cursor-dot,
+      .cursor-outline {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- نشانگر موس -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- منوی بالا -->
+  <header>
+    <nav class="navbar">
+      <a href="#home" class="logo">Azadi<span>Portal</span></a>
+
+      <div class="nav-links">
+        <a href="#home">خانه</a>
+        <a href="#about">درباره ما</a>
+        <a href="#features">امکانات</a>
+      </div>
+
+      <a href="#packages" class="nav-button">مشاهده بسته‌ها</a>
+    </nav>
+  </header>
+
+  <!-- صفحه اصلی -->
+  <main>
+    <section class="hero" id="home">
+
+      <div class="hero-content">
+        <span class="badge">به آزادی خوش آمدید</span>
+
+        <h1>
+          به دنیای <span>آزادی</span><br>
+          خوش آمدید
+        </h1>
+
+        <p>
+          با کانفیگ های پورتال آزادی از دست اینترنت ملی رها شوید (مرگ بر جمهوری اسلامی)
+        </p>
+
+        <div class="hero-actions">
+          <a href="#packages" class="primary-btn">مشاهده بسته‌ها</a>
+          <a href="#about" class="secondary-btn">بیشتر بدانید</a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img
+          src="images/azadi-banner.png"
+          alt="Azadi Portal Banner"
+        >
+      </div>
+
+    </section>
+
+ 
+    <section class="section" id="about">
+      <div class="section-heading">
+        <span>درباره ما</span>
+        <h2>آزادی چیست؟</h2>
+        <p>نگاهی کوتاه به دنیای Azadi Portal</p>
+      </div>
+
+      <div class="about-box">
+        Azadi Portal بستری برای معرفی و ارائه خدمات دیجیتال است.
+        هدف ما ایجاد تجربه‌ای ساده، مدرن و قابل اعتماد برای کاربران است.
+      </div>
+    </section>
+
+    <!-- امکانات -->
+    <section class="section" id="features">
+      <div class="section-heading">
+        <span>امکانات ما</span>
+        <h2>چرا آزادی؟</h2>
+        <p>امکاناتی برای تجربه‌ای بهتر</p>
+      </div>
+
+      <div class="features">
+
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>سرعت و سادگی</h3>
+          <p>دسترسی ساده به اطلاعات و خدمات مورد نیاز.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3>تجربه مطمئن</h3>
+          <p>تلاش برای ارائه تجربه‌ای قابل اعتماد و شفاف.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🌐</div>
+          <h3>دسترسی آسان</h3>
+          <p>محیطی مدرن برای مشاهده و انتخاب خدمات.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- بسته‌ها -->
+    <section class="section" id="packages">
+      <div class="section-heading">
+        <h2>بسته های آزادی</h2>
+        <p>بسته هارا تماشا و انتخاب کنید</p>
+      </div>
+
+      <div class="packages">
+
+        <div class="package-card">
+          <h3>یه نت کمی</h3>
+          <p class="description">
+            5 کیگ - 3 روزه
+          </p>
+
+          <div class="price">
+            15,000
+            <small>تومان</small>
+          </div>
+
+        </div>
+
+        <div class="package-card">
+          <h3>پولدارا</h3>
+          <p class="description">
+            300 گیگ - 120 روزه
+          </p>
+
+          <div class="price">
+            7,000,000
+            <small>تومان</small>
+          </div>
+
+        </div>
+
+        <div class="package-card">
+          <h3>بریم تو نت ملی دانلود</h3>
+          <p class="description">
+            نامحدود (1 تا 7 شب) - 30 روزه
+          </p>
+
+          <div class="price">
+            30,000
+            <small>تومان</small>
+          </div>
+
+        </div>
+		
+		 <div class="package-card">
+          <h3>همون همیشگی!</h3>
+          <p class="description">
+            15 گیگ - 30 روزه
+          </p>
+
+          <div class="price">
+            30,000
+            <small>تومان</small>
+          </div>
+
+        </div>
+		
+		
+		 <div class="package-card">
+          <h3>نمیتونم نگه دارم</h3>
+          <p class="description">
+            20 گیگ - 15 روزه
+          </p>
+
+          <div class="price">
+            20,000
+            <small>تومان</small>
+          </div>
+
+        </div>
+		
+		
+		<div class="package-card">
+          <h3>همون همیشگی!</h3>
+          <p class="description">
+            15 گیگ - 30 روزه
+          </p>
+
+          <div class="price">
+            30,000
+            <small>تومان</small>
+          </div>
+
+        </div>
+		
+		
+		<div class="package-card">
+          <h3>همون همیشگی!</h3>
+          <p class="description">
+            15 گیگ - 30 روزه
+          </p>
+
+          <div class="price">
+            30,000
+            <small>تومان</small>
+          </div>
+
+        </div>
+		
+		
+		
+		
+
+      </div>
+    </section>
+  </main>
+
+  <!-- پایین صفحه -->
+  <footer>
+    <strong>Azadi Portal</strong>
+    <p>تمامی حقوق محفوظ است.</p>
+    <p>© 2026 Azadi Portal</p>
+  </footer>
+
+  <script>
+    // نشانگر موس
+    const dot = document.querySelector(".cursor-dot");
+    const outline = document.querySelector(".cursor-outline");
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let outlineX = 0;
+    let outlineY = 0;
+
+    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+
+    if (!isTouchDevice) {
+      document.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        dot.style.left = mouseX + "px";
+        dot.style.top = mouseY + "px";
+      });
+
+      function animateCursor() {
+        outlineX += (mouseX - outlineX) * 0.16;
+        outlineY += (mouseY - outlineY) * 0.16;
+
+        outline.style.left = outlineX + "px";
+        outline.style.top = outlineY + "px";
+
+        requestAnimationFrame(animateCursor);
+      }
+
+      animateCursor();
+
+      // افکت هنگام رفتن روی دکمه‌ها
+      document.querySelectorAll("a, button, .package-card, .feature-card").forEach((el) => {
+        el.addEventListener("mouseenter", () => {
+          outline.classList.add("hover");
+        });
+
+        el.addEventListener("mouseleave", () => {
+          outline.classList.remove("hover");
+        });
+      });
+
+      // افکت کلیک
+      document.addEventListener("mousedown", () => {
+        outline.classList.add("click");
+      });
+
+      document.addEventListener("mouseup", () => {
+        outline.classList.remove("click");
+      });
+    }
+
+    // موج‌های زیر موس
+    let lastRipple = 0;
+
+    function createRipple(x, y, size = 25) {
+      const ripple = document.createElement("div");
+      ripple.className = "ripple";
+
+      ripple.style.left = x + "px";
+      ripple.style.top = y + "px";
+      ripple.style.width = size + "px";
+      ripple.style.height = size + "px";
+
+      document.body.appendChild(ripple);
+
+      ripple.addEventListener("animationend", () => {
+        ripple.remove();
+      });
+    }
+
+    if (!isTouchDevice) {
+      document.addEventListener("mousemove", (e) => {
+        const now = Date.now();
+
+        if (now - lastRipple > 110) {
+          createRipple(e.clientX, e.clientY, 20);
+          lastRipple = now;
+        }
+      });
+
+      document.addEventListener("click", (e) => {
+        createRipple(e.clientX, e.clientY, 35);
+      });
+    } else {
+      document.addEventListener("touchstart", (e) => {
+        const touch = e.touches[0];
+        createRipple(touch.clientX, touch.clientY, 35);
+      }, { passive: true });
+    }
+  </script>
+
+</body>
+</html>
